@@ -1,8 +1,14 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import react from 'react';
 import buildspaceLogo from '../assets/buildspace-logo.png';
 import {useState} from 'react';
+import Particles from "react-tsparticles";
+import { useCallback } from "react";
+import { loadFull } from "tsparticles";
+
+import options from "./particles.json"
+
+
 
 const Home = () => {
   const [userInput, setUserInput] = useState('');
@@ -32,18 +38,28 @@ const Home = () => {
   function onUserChangedText(event){
       setUserInput(event.target.value)
   }
+  const particlesInit = useCallback(async engine => {
+    console.log(engine);
+    // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
+    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+    // starting from v2 you can add only the features you need reducing the bundle size
+    await loadFull(engine);
+  }, []);
+  const particlesLoaded = useCallback(async container => {
+    await console.log(container);
+  }, []);
   return (
     <div className="root">
       <Head>
-        <title>GPT-3 Writer | buildspace</title>
+        <title>Dream Interpreter</title>
       </Head>
       <div className="container">
         <div className="header">
           <div className="header-title">
-            <h1>Dinner? We got you.</h1>
+            <h1>dreams. what does it mean?</h1>
           </div>
           <div className="header-subtitle">
-            <h2>Tell us all the ingredients inside of your fridge, the cooking appliances that you have and then BAM! You won't have to worry about what you're gonna eat.</h2>
+            <h2>Tell me about a very specific dream that you had. The more specific, the better. I'll tell you what it means.</h2>
           </div>
         </div>
       </div>
@@ -84,13 +100,18 @@ const Home = () => {
           target="_blank"
           rel="noreferrer"
         >
-          <div className="badge">
-            <Image src={buildspaceLogo} alt="buildspace logo" />
-            <p>build with buildspace</p>
-          </div>
+          
         </a>
       </div>
+      <Particles
+      id="tsparticles"
+      init={particlesInit}
+      loaded={particlesLoaded}
+        options={options}
+      />
     </div>
+
+    
   );
 };
 
