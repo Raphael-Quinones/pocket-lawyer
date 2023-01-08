@@ -9,6 +9,7 @@ import {useState} from 'react';
 import Particles from "react-tsparticles";
 import { useCallback } from "react";
 import { loadFull } from "tsparticles";
+import { Analytics } from '@vercel/analytics/react';
 
 import options from "./particles.json"
 
@@ -60,7 +61,7 @@ const Home = () => {
       <div className="container">
         <div className="header">
           <div className="header-title">
-            <h1>dreams. what does it mean?</h1>
+            <h1>dreams. what does they mean?</h1>
           </div>
           <div className="header-subtitle">
             <h2>Tell me about a very specific dream that you had. The more specific, the better. I'll tell you what it means.</h2>
@@ -142,7 +143,9 @@ const Home = () => {
       loaded={particlesLoaded}
         options={options}
       />
+      <Analytics />
     </div>
+    
 
     
   );
