@@ -58,6 +58,9 @@ const Home = () => {
           <div className="header-title">
             <h1>dreams. what does it mean?</h1>
           </div>
+          <div className="author">
+            <h4>Made by Raphael Quinones</h4>
+          </div>
           <div className="header-subtitle">
             <h2>Tell me about a very specific dream that you had. The more specific, the better. I'll tell you what it means.</h2>
           </div>
