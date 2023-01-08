@@ -1,6 +1,10 @@
 import Head from 'next/head';
 import react from 'react';
-import buildspaceLogo from '../assets/buildspace-logo.png';
+import Image from 'next/image'
+import twitterLogo from '../assets/twitter.png';
+import facebookLogo from '../assets/facebook.png';
+import githubLogo from '../assets/github.png';
+import linkedinLogo from '../assets/linkedin.png';
 import {useState} from 'react';
 import Particles from "react-tsparticles";
 import { useCallback } from "react";
@@ -58,9 +62,6 @@ const Home = () => {
           <div className="header-title">
             <h1>dreams. what does it mean?</h1>
           </div>
-          <div className="author">
-            <h4>Made by Raphael Quinones</h4>
-          </div>
           <div className="header-subtitle">
             <h2>Tell me about a very specific dream that you had. The more specific, the better. I'll tell you what it means.</h2>
           </div>
@@ -99,13 +100,42 @@ const Home = () => {
       
       <div className="badge-container grow">
         <a
-          href="https://buildspace.so/builds/ai-writer"
+          href="https://twitter.com/RaphaelTrivi"
           target="_blank"
           rel="noreferrer"
         >
-          
+          Made by Raphael Quinones
+        </a>
+        <a className = "grow"
+          href="https://twitter.com/RaphaelTrivi"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Image src={twitterLogo} width = {17} height = {17}/>
+        </a>
+        <a className = "grow"
+          href="https://twitter.com/RaphaelTrivi"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Image src={facebookLogo} width = {17} height = {17}/>
+        </a>
+        <a className = "grow"
+          href="https://twitter.com/RaphaelTrivi"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Image src={linkedinLogo} width = {17} height = {17}/>
+        </a>
+        <a className = "grow"
+          href="https://twitter.com/RaphaelTrivi"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Image src={githubLogo} width = {17} height = {17}/>
         </a>
       </div>
+      
       <Particles
       id="tsparticles"
       init={particlesInit}
