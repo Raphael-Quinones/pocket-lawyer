@@ -61,7 +61,7 @@ const Home = () => {
       <div className="container">
         <div className="header">
           <div className="header-title">
-            <h1>dreams. what does they mean?</h1>
+            <h1>dreams. what do they mean?</h1>
           </div>
           <div className="header-subtitle">
             <h2>Tell me about a very specific dream that you had. The more specific, the better. I'll tell you what it means.</h2>
