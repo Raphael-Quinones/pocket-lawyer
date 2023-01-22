@@ -17,10 +17,71 @@ import options from "./particles.json"
 
 const Home = () => {
   const [userInput, setUserInput] = useState('');
-  const [apiOutput, setApiOutput] = useState('')
-  const [isGenerating, setIsGenerating] = useState(false)
+  const [apiOutput, setApiOutput] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  //Maximum number of clicks allowed
+  var maxClicks = 5;
+
+  function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
+  function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+  }
+
+  function checkForCookie(){
+    if(getCookie("buttonClicks") != ""){
+      var clicks = parseInt(getCookie("buttonClicks"));
+      if(clicks >= maxClicks){
+          setIsDisabled(true);
+          alert("You have reached the maximum number of clicks");
+          return true;
+      }
+    }
+    else{
+        //Create cookie with value 0
+        setCookie("buttonClicks", 0, 1);
+        return false;
+    }
+    }
+
+    function incrementClicks(){
+      var clicks = parseInt(getCookie("buttonClicks"));
+    if(clicks < maxClicks){
+        clicks++;
+        setCookie("buttonClicks", clicks, 1);
+    }
+    else{
+        setIsDisabled(true);
+        alert("You have reached the maximum number of clicks");
+    }
+    }
 
   const callGenerateEndpoint = async () => {
+    if(checkForCookie()){
+      return
+    };
+    incrementClicks();
+
+
     setIsGenerating(true);
     
     console.log("Calling OpenAI...")
@@ -73,7 +134,8 @@ const Home = () => {
         className="prompt-box"
         value={userInput}
         onChange={onUserChangedText}></textarea>
-        <div className="prompt-buttons">
+        { !isDisabled ?
+          <div className="prompt-buttons">
         <a 
           className = { isGenerating ? "generate-button loading":"generate-button" }
           onClick={callGenerateEndpoint}
@@ -82,7 +144,10 @@ const Home = () => {
             { isGenerating ? <span class = "loader"></span>: <p>Generate</p>}
           </div>
         </a>
-        </div>
+        </div>: <div className = "header-subtitle">
+          <h2>Please come back tomorrow or contact the developer for more generations ;D</h2>
+          </div>
+        }
         { apiOutput && (
           <div className = "output">
             <div className = "output-header-container">
@@ -99,7 +164,7 @@ const Home = () => {
         }
       </div>
       
-      <div className="badge-container grow">
+      <div className="badge-container">
         <a
           href="https://twitter.com/RaphaelTrivi"
           target="_blank"
@@ -115,21 +180,21 @@ const Home = () => {
           <Image src={twitterLogo} width = {17} height = {17}/>
         </a>
         <a className = "grow"
-          href="https://twitter.com/RaphaelTrivi"
+          href="https://www.facebook.com/EuniQue0704/"
           target="_blank"
           rel="noreferrer"
         >
           <Image src={facebookLogo} width = {17} height = {17}/>
         </a>
         <a className = "grow"
-          href="https://twitter.com/RaphaelTrivi"
+          href="https://www.linkedin.com/in/raphael-quinones/"
           target="_blank"
           rel="noreferrer"
         >
           <Image src={linkedinLogo} width = {17} height = {17}/>
         </a>
         <a className = "grow"
-          href="https://twitter.com/RaphaelTrivi"
+          href="https://github.com/Raphael-Quinones"
           target="_blank"
           rel="noreferrer"
         >
