@@ -8,7 +8,7 @@ const openai = new OpenAIApi(configuration);
 //Interpret the dream that I will type in the next line:
 //Tell me some funny believable false facts about the topic I will type
 
-const basePromptPrefix = "Interpret the dream that I will type in the next line:";
+const basePromptPrefix = "Gather everything you can about Philippine Laws. Every single detail, and then answer the question in the next line with practical solutions and how to overcome that particular legal problem in the Philippines";
 const generateAction = async (req, res) => {
     //Run first prompt
     console.log(`API: ${basePromptPrefix}${req.body.userInput}\n`)
