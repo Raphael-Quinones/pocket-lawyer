@@ -170,7 +170,7 @@ const Home = () => {
           target="_blank"
           rel="noreferrer"
         >
-          Made by Raphael Quinones
+          Made by Raphael Quinones testing
         </a>
         <a className = "grow"
           href="https://twitter.com/RaphaelTrivi"
