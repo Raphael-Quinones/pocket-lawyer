@@ -157,7 +157,7 @@ const Home = () => {
           target="_blank"
           rel="noreferrer"
         >
-          Made by Raphael Quinones
+          Raphael Quinones and Eunice Anada
         </a>
         <a className = "grow"
           href="https://twitter.com/RaphaelTrivi"
