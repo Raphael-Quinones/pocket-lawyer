@@ -109,15 +109,17 @@ const Home = () => {
       <div className="container">
         <div className="header">
           <div className="header-title">
-            <h1>Pinoy Pocket Lawyer</h1>
+            <h1>Pocket Lawyer PH</h1>
           </div>
           <div className="header-subtitle">
-            <h2>Worried about yourself? Ask anything here</h2>
+            <h2>Mayroon ka bang katanungan tungkol sa batas?</h2>
+            <h2>Tingin mo ba'y naabuso ka ngunit hindi ka sigurado?</h2>
+            <h2>Ako ang bahalang tumugon sa iyong mga nais malaman. </h2>
           </div>
         </div>
       </div>
       <div className="prompt-container">
-        <textarea placeholder="start typing here" 
+        <textarea placeholder="Mag-type rito" 
         className="prompt-box"
         value={userInput}
         onChange={onUserChangedText}></textarea>
@@ -128,7 +130,7 @@ const Home = () => {
           onClick={callGenerateEndpoint}
         >
           <div className="generate">
-            { isGenerating ? <span class = "loader"></span>: <p>Generate</p>}
+            { isGenerating ? <span class = "loader"></span>: <p>Itanong</p>}
           </div>
         </a>
         </div>: <div className = "header-subtitle">
