@@ -9,26 +9,18 @@ import {useState} from 'react';
 import { useCallback } from "react";
 import { Analytics } from '@vercel/analytics/react';
 import ReactGA from 'react-ga'
-import { createBrowserHistory } from 'history';
 
 
 ReactGA.initialize('G-TQ2K9QY16N')
-
-
-
+if (typeof window !== 'undefined') {
+  ReactGA.pageview(window.location.pathname + window.location.search);
+}
 const Home = () => {
   const [userInput, setUserInput] = useState('');
   const [apiOutput, setApiOutput] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
-    //for google analytics
-  function logPageView() {
-    ReactGA.set({ page: window.location.pathname });
-    ReactGA.pageview(window.location.pathname);
-  }
-  const history = createBrowserHistory();
-  history.listen(logPageView);
 
 
   //Maximum number of clicks allowed
