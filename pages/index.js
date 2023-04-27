@@ -8,6 +8,9 @@ import linkedinLogo from '../assets/linkedin.png';
 import {useState} from 'react';
 import { useCallback } from "react";
 import { Analytics } from '@vercel/analytics/react';
+import ReactGA from 'react-ga'
+
+ReactGA.initialize('G-TQ2K9QY16N')
 
 
 
@@ -19,7 +22,7 @@ const Home = () => {
   const [isDisabled, setIsDisabled] = useState(false);
 
   //Maximum number of clicks allowed
-  var maxClicks = 5;
+  var maxClicks = 10;
 
   function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -92,9 +95,9 @@ const Home = () => {
 
     const data = await response.json();
     const { output } = data;
-    console.log("OpenAI replied...", output.text)
+    console.log("OpenAI replied...", output)
 
-    setApiOutput(`${output.text}`);
+    setApiOutput(`${output}`);
     setIsGenerating(false);
   }
 
@@ -115,6 +118,9 @@ const Home = () => {
             <h2>Mayroon ka bang katanungan tungkol sa batas?</h2>
             <h2>Tingin mo ba'y naabuso ka ngunit hindi ka sigurado?</h2>
             <h2>Ako ang bahalang tumugon sa iyong mga nais malaman. </h2>
+            <br/>
+            <h2><b>Donations Accepted | GCash: 09150573941</b></h2>
+            <h2><i>Will be used for maintaining the site to help more people</i></h2>
           </div>
         </div>
       </div>
