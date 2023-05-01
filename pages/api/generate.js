@@ -23,7 +23,7 @@ const generateAction = async (req, res) => {
     const basePromptOutput = baseCompletion.data.choices[0].message.content;
     console.log(basePromptOutput)
 
-    res.status(200).json({ output: basePromptOutput});
+    res.status(200).json({ output: "Sorry not available"});
 };
 
 export default generateAction

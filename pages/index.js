@@ -8,23 +8,25 @@ import linkedinLogo from '../assets/linkedin.png';
 import {useState} from 'react';
 import { useCallback } from "react";
 import { Analytics } from '@vercel/analytics/react';
-import ReactGA from 'react-ga'
 
-
-ReactGA.initialize('G-TQ2K9QY16N')
-if (typeof window !== 'undefined') {
-  ReactGA.pageview(window.location.pathname + window.location.search);
-}
 const Home = () => {
   const [userInput, setUserInput] = useState('');
   const [apiOutput, setApiOutput] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
-
+  //google analytics
+  function injectGA(){
+    if (typeof window !== 'undefined') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      gtag('config', 'G-TQ2K9QY16N');    }
+  }
 
   //Maximum number of clicks allowed
-  var maxClicks = 10;
+  var maxClicks = 100;
 
   function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -111,18 +113,19 @@ const Home = () => {
       <Head>
         <title>Pinoy Pocket Lawyer</title>
       </Head>
+          {/* Global site tag (gtag.js) - Google Analytics */}
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-TQ2K9QY16N"
+          />
+    <script>{injectGA()}</script>
       <div className="container">
         <div className="header">
           <div className="header-title">
-            <h1>Pocket Lawyer PH</h1>
+            <h1>Site under maintenance</h1>
           </div>
           <div className="header-subtitle">
-            <h2>Mayroon ka bang katanungan tungkol sa batas?</h2>
-            <h2>Tingin mo ba'y naabuso ka ngunit hindi ka sigurado?</h2>
-            <h2>Ako ang bahalang tumugon sa iyong mga nais malaman. </h2>
             <br/>
-            <h2><b>Donations Accepted | GCash: 09150573941</b></h2>
-            <h2><i>Will be used for maintaining the site to help more people</i></h2>
           </div>
         </div>
       </div>
@@ -138,7 +141,7 @@ const Home = () => {
           onClick={callGenerateEndpoint}
         >
           <div className="generate">
-            { isGenerating ? <span class = "loader"></span>: <p>Itanong</p>}
+            { isGenerating ? <span class = "loader"></span>: <p>???</p>}
           </div>
         </a>
         </div>: <div className = "header-subtitle">
